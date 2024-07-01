@@ -2,7 +2,7 @@ name: serv00 login
 
 on:
   schedule:
-    - cron: '0 10 */30 * *'  # 每 30 天的上午 10 点运行
+    - cron: '0 8 * * *'  # 每天早上8点运行
   workflow_dispatch:
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+          password: ${{ secrets.SSH_PASSWORD }}  # 使用密码登录
           script_stop: true
           script: |
             echo "Starting SSH script execution..."
